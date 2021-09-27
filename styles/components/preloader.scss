@@ -1,0 +1,42 @@
+.preloader {
+  @extend %cover;
+  @extend %center;
+
+  background-color: rgb(207, 195, 195);
+  color: black;
+  text-align: center;
+  z-index: z('preloader');
+}
+
+.preloader__animation {
+
+}
+
+.preloader__animation__icon {
+  height: 7rem;
+  width: 15rem;
+}
+
+.preloader__indicator {
+  bottom: 15rem;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.preloader__indicator__number {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.preloader__indicator__number__text {
+
+}
+
+.preloader__indicator__link {
+  @extend %button;
+
+  opacity: 0;
+  visibility: hidden;
+}
