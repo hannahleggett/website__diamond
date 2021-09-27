@@ -1,0 +1,20 @@
+extends ../base.pug
+
+block variables
+  - var template = 'work'
+
+block content 
+  .work
+    .work__wrapper
+      .work__info
+        h2.work__title=work.data.title
+          
+        .work__description
+        each item in work.data.description
+          p.work__description__label=item.label
+          p.work__description__text=item.text
+        
+      .work__gallery
+        each media in work.data.gallery
+          figure.work__gallery__media
+            img(src=media.image.url, alt=media.image.alt)

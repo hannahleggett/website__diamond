@@ -1,0 +1,18 @@
+extends ../base.pug
+
+block variables
+  - var template = 'home'
+
+block content 
+  .home
+    .home__wrapper
+      .home__list
+        each item in home
+          each work in item.data.projects
+            a(href=Link(work.project)).home__list__link=work.project.data.title
+            
+            figure.home__list__link__media
+              img(src=work.project.data.image.url, alt="").home__list__link__image
+      
+      .home__toggle
+        a.home__toggle__link(href="/play") Play

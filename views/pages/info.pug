@@ -1,0 +1,21 @@
+extends ../base.pug
+
+block variables
+  - var template = 'info'
+
+block content 
+  .info
+    .info__wrapper
+      .info__title
+        h2.info__title__text=info.data.title
+
+      each section in info.data.body
+        if section.slice_type == 'content'
+          h3.info__content=section.primary.subheading
+          
+          each item in section.items
+            .info__content__links
+              a.info__content__link(href=item.link.url)=item.text
+
+              figure.info__content__media
+                img.info__content__media__image(src=item.image.url)

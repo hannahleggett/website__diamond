@@ -1,0 +1,13 @@
+extends ../base.pug
+
+block variables
+  - var template = 'play'
+
+block content 
+  .play
+    .play__wrapper
+
+      .play__gallery
+        each media in play.data.gallery
+          figure.play__gallery__media
+            img(src=media.image.url, alt=media.image.alt)
