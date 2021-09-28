@@ -1,11 +1,13 @@
 .preloader 
-  .preloader__animation
-      svg.preloader__animation__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98.21 48.21")
-        polygon(fill="#000" points="28.18 26.21 24.03 0.77 10.33 0.77 0 48.21 48.22 47.01 55.36 0 41.11 0.77 28.18 26.21")
-        polygon(fill="#000" points="79.76 0 64.32 0.22 57.14 46.43 71.7 45.99 95.75 36.05 98.21 9.38 79.76 0")
+  .canvas
+    .preloader__animation__wrapper
+      .preloader__animation
+          svg.preloader__animation__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98.21 48.21")
+            polygon(fill="#000" points="28.18 26.21 24.03 0.77 10.33 0.77 0 48.21 48.22 47.01 55.36 0 41.11 0.77 28.18 26.21")
+            polygon(fill="#000" points="79.76 0 64.32 0.22 57.14 46.43 71.7 45.99 95.75 36.05 98.21 9.38 79.76 0")
 
-  .preloader__indicator
-    .preloader__indicator__number
-      .preloader__indicator__number__text 0%
+    .preloader__indicator
+      .preloader__indicator__number
+        .preloader__indicator__number__text 0%
 
-    a.preloader__indicator__link=preloader.data.text
+      a.preloader__indicator__link(href="/")=preloader.data.text

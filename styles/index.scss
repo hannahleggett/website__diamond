@@ -1,33 +1,29 @@
 @import './base/reset';
 
-// @import './utils/variables';
-// @import './utils/functions';
+@import './utils/variables';
+@import './utils/functions';
 @import './utils/mixins';
 // @import './utils/vendors';
-// @import './utils/responsive';
+@import './utils/responsive';
 
 @import './shared/button';
 @import './shared/descriptions';
-// @import './shared/links';
+@import './shared/links';
 // @import './shared/pages';
-// @import './shared/titles';
-// @import './shared/vertical-titles';
+@import './shared/titles';
 
-// @import './base/fonts';
+@import './base/fonts';
 @import './base/base';
 
 @import './components/preloader';
 // @import './components/transition';
 
-// @import './layout/navigation';
+@import './layout/navigation';
 
-// @import './pages/about/about';
-// @import './pages/about/content';
-// @import './pages/about/gallery';
-// @import './pages/about/highlight';
+@import './pages/info/info';
 
-// @import './pages/collections/collections';
+// @import './pages/play/play';
 
-// @import './pages/details/details';
+@import './pages/work/work';
 
-// @import './pages/home/home';
+@import './pages/home/home';

@@ -1,0 +1,48 @@
+.navigation {
+  // @extend %cover;
+
+  color: black;
+  // pointer-events: none;
+  z-index: z('navigation');
+
+}
+
+.navigation__link {
+  color: black;
+  font-size: 0;
+  left: 4rem;
+  position: absolute;
+  top: 4rem;
+  transition: color 0.4s ease;
+  width: 5.5rem;
+
+  &:hover {
+    color: $color-accent-lime;
+  }
+}
+
+.navigation__link__icon {
+  
+}
+
+.navigation__list {
+
+}
+
+.navigation__list__item {
+  cursor: pointer;
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
+}
+
+.navigation__list__link {
+  @extend %link--hidden;
+  @extend %description-16;
+  
+  display: block;
+  padding: 0 0.5rem;
+  
+  &:hover {
+  }
+}

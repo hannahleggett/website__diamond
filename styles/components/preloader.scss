@@ -2,14 +2,27 @@
   @extend %cover;
   @extend %center;
 
+  display: none;
+  visibility: hidden;
+
   background-color: rgb(207, 195, 195);
   color: black;
   text-align: center;
   z-index: z('preloader');
 }
 
+.canvas {
+  @extend %cover;
+  @extend %center;
+  z-index: z('canvas');
+}
+
 .preloader__animation {
 
+}
+
+.preloader__animation__wrapper {
+  overflow: hidden;
 }
 
 .preloader__animation__icon {
@@ -18,7 +31,7 @@
 }
 
 .preloader__indicator {
-  bottom: 15rem;
+  bottom: 10rem;
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
@@ -27,16 +40,23 @@
 .preloader__indicator__number {
   position: absolute;
   left: 50%;
+  overflow: hidden;
   transform: translateX(-50%);
 }
 
 .preloader__indicator__number__text {
-
+  display: inline-block;
 }
 
 .preloader__indicator__link {
-  @extend %button;
+  @extend %button-style;
 
   opacity: 0;
   visibility: hidden;
+}
+
+.preloader__indicator__link__text {
+  @extend %description-20;
+
+  display: inline-block;
 }

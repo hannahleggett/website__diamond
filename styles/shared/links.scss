@@ -1,19 +1,21 @@
 %link__wrapper {
   display: inline-block;
-  overflow: hidden;
+  // overflow: hidden;
   position: relative;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 %link__line {
   background: currentColor;
+  color: $color-accent-lime;
   bottom: 0;
   content: '';
-  height: 1px;
+  height: 2.3rem;
   left: 0;
   position: absolute;
   transition: transform 0.7s $ease-in-out;
   width: 100%;
+  z-index: -1;
 }
 
 %link__line--visible {

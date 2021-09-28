@@ -9,10 +9,12 @@ block content
       .home__list
         each item in home
           each work in item.data.projects
-            a(href=Link(work.project)).home__list__link=work.project.data.title
+            a(href=Link(work.project) data-src=work.project.data.image.url).home__list__link
+              .home__list__link__text=work.project.data.title
             
-            figure.home__list__link__media
-              img(src=work.project.data.image.url, alt="").home__list__link__image
+            //- .home__list__media__wrapper
+            //-   figure.home__list__media
+            //-     img(data-src=work.project.data.image.url, alt="").home__list__media__image
       
       .home__toggle
         a.home__toggle__link(href="/play") Play
