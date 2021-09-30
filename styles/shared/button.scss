@@ -4,8 +4,54 @@
   padding: 1rem 5rem;
   transition: all 0.4s;
 
+    &:after {
+      @extend %button__fill;
+      @extend %button__fill--hidden;
+    }
+  
+    &:hover {
+      &:after {
+        @extend %button__fill--visible;
+      }
+    }
+  }
+
+%button__fill {
+  background: currentColor;
+  color: $color-accent-lime;
+  bottom: 0;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  transition: transform 0.7s $ease-in-out;
+  width: 100%;
+  z-index: -1;
+}
+
+%button__fill--visible {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+%button__fill--hidden {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+%button--hidden {
+  @extend %link__wrapper;
+
+  display: inline-block;
+
+  &:after {
+    @extend %button__fill;
+    @extend %button__fill--hidden;
+  }
+
   &:hover {
-    background-color: black;
-    color: white;
+    &:after {
+      @extend %button__fill--visible;
+    }
   }
 }

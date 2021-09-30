@@ -2,8 +2,8 @@
   @extend %cover;
   @extend %center;
 
-  display: none;
-  visibility: hidden;
+  // display: none;
+  // visibility: hidden;
 
   background-color: rgb(207, 195, 195);
   color: black;
@@ -49,14 +49,14 @@
 }
 
 .preloader__indicator__link {
-  @extend %button-style;
+  @extend %button--hidden;
 
   opacity: 0;
   visibility: hidden;
 }
 
 .preloader__indicator__link__text {
-  @extend %description-20;
+  @extend %title-22;
 
   display: inline-block;
 }

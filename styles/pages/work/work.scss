@@ -1,5 +1,7 @@
 .work {
+  @extend %page;
   
+  z-index: 'content';
 }
 
 .work__wrapper {
@@ -7,36 +9,46 @@
   @extend %center;
 
   display: flex;
+  flex-direction: column;
   pointer-events: none;
 }
 
-.work__title {
-  left: 12rem;
-  position: absolute;
-  top: 16rem;
+.work__text__wrapper {
+  align-items: center;
+  display: flex;
+  position: relative;
+  margin-top: 7rem;
   z-index: 3;
+}
+
+.work__title {
+  text-align: center;
+  width: 30rem;
 } 
 
 .work__title__text {
-  @extend %title-70;  
+  @extend %title-22;  
 }
 
 .work__info {
   display: flex;
-  flex-direction: column;
-  left: 12rem;
-  position: absolute;
-  top: 24rem;
 }
 
 .work__info__description {
+  align-content: center;
+  align-items: flex-start;
   display: flex;
-  margin-top: 0.3rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  text-align: left;
+  width: 30rem;
 }
 
-.work__info__client {
-  margin-bottom: 0;
-}
+// .work__info__client {
+
+// }
 
 // .work__info__date {
 
@@ -52,24 +64,24 @@
 
 
 .work__info__description__label {
-  @extend %description-14;
-
-  margin-right: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 .work__info__description__text {
-  @extend %description-14
+  font-weight: 300;
 }
 
 .work__gallery {
+  @extend %center;
+
   display: flex;
   flex-direction: row;
-  left: 40rem;
-  position: absolute;
   z-index: 1;
 }
 
 .work__gallery__media {
+  height: 80rem;
   padding: 0 1.5rem;
 
   &:first-child {
@@ -82,18 +94,19 @@
 }
 
 .work__gallery__media__image {
-  height: 70rem;
+  height: 100%;
 }
 
 .work__link {
-  bottom: 10rem;
-  cursor: pointer;
-  left: 9rem;
-  pointer-events: auto;
   position: absolute;
+  bottom: 7rem;
+  cursor: pointer;
+  left: 7rem;
+  pointer-events: auto;
+  z-index: 3;
 }
 
 .work__link__icon {
-  height: 6rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
 }

@@ -1,15 +1,15 @@
 .home {
   // @extend %center;
-  // @extend %page;
+  @extend %page;
 
-  // background: $color-contessa;
-  // color: $color-quarter-spanish-white;
-  // overflow: hidden;
-  // text-align: center;
+  opacity: 0;
+  color: black;
+  overflow: hidden;
+  text-align: center;
 
-  // &--active {
-    // @extend %page--active;
-  // }
+  &--active {
+    @extend %page--active;
+  }
 }
 
 .home__wrapper {
@@ -19,7 +19,7 @@
 .home__list {
   position: absolute;
   left: 4rem;
-  top: 50%;
+  top: 50rem;
 }
 
 .home__list__link {
@@ -42,6 +42,8 @@
 
 .home__list__media__wrapper {
   // @extend %cover;
+  display: none;
+  visibility: hidden;
 }
 
 .home__list__link__media {
@@ -58,7 +60,7 @@
 
   align-items: center;
   background-color: $color-accent-lime;
-  bottom: -1.9rem;
+  top: 99.5vh;
   display: flex;
   justify-content: center;
   padding: 0.5rem 0rem;
@@ -69,6 +71,6 @@
   
 
   &:hover {
-    bottom: 0rem;
+    top: 98vh;
   }
 }
