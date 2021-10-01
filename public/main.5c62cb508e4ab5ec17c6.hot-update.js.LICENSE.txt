@@ -1,0 +1,13 @@
+/*! lodash */
+
+/*! pages/Home */
+
+/*! pages/Info */
+
+/*! pages/Play */
+
+/*! pages/Work */
+
+/*!**********************!*\
+  !*** ./app/index.js ***!
+  \**********************/

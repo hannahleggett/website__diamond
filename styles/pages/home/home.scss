@@ -2,7 +2,7 @@
   // @extend %center;
   @extend %page;
 
-  opacity: 0;
+  // opacity: 0;
   color: black;
   overflow: hidden;
   text-align: center;
@@ -17,9 +17,9 @@
 }
 
 .home__list {
-  position: absolute;
-  left: 4rem;
-  top: 50rem;
+  position: relative;
+  margin-left: 4rem;
+  margin-top: 50rem;
 }
 
 .home__list__link {

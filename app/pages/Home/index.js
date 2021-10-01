@@ -1,4 +1,3 @@
-// import Button from 'animations/Button'
 import Page from 'classes/Page'
 
 export default class Home extends Page {
@@ -8,24 +7,15 @@ export default class Home extends Page {
 
       element: '.home',
       elements: {
-        wrapper: '.home__wrapper',
         navigation: document.querySelector('.navigation'),
-        link: '.home__link'
+        playToggle: '.home__toggle'
       }
     })
   }
 
-  // create () {
-  //   super.create()
+  create () {
+    super.create()
 
-  // this.link = new Button({
-  //   element: this.elements.link
-  // })
-  // }
-
-  destroy () {
-    super.destroy()
-
-    this.removeEventListeners()
+    this.elements.playToggle.addEventListener('click', _ => console.log('Oh, you clicked me'))
   }
 }

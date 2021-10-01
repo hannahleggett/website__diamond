@@ -2,6 +2,10 @@
   @extend %page;
   
   z-index: 'content';
+  
+  &--active {
+    @extend %page--active;
+  }
 }
 
 .work__wrapper {

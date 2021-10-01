@@ -5,7 +5,10 @@ export default class Play extends Page {
     super({
       id: 'play',
 
-      element: '.play'
+      element: '.play',
+      elements: {
+        navigation: document.querySelector('.navigation')
+      }
     })
   }
 }

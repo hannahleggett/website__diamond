@@ -1,5 +1,12 @@
 .info {
   @extend %page;
+
+  // background: $color-cadet-blue;
+  // color: $color-bright-gray;
+
+  &--active {
+    @extend %page--active;
+  }
 }
 
 .info__wrapper {
@@ -73,7 +80,7 @@
 }
 
 .info__content__media {
-
+  display: none;
 }
 
 .info__content__media__image {

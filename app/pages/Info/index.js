@@ -7,7 +7,6 @@ export default class Info extends Page {
 
       element: '.info',
       elements: {
-        wrapper: '.info__wrapper',
         navigation: document.querySelector('.navigation')
       }
     })
