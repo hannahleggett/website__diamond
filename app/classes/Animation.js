@@ -2,7 +2,7 @@ import Component from 'classes/Component'
 
 export default class Animation extends Component {
   constructor ({ element, elements }) {
-    super({ // pass in from Component class
+    super({
       element,
       elements
     })

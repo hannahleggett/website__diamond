@@ -5,6 +5,8 @@ import NormalizeWheel from 'normalize-wheel'
 import Prefix from 'prefix'
 
 import Title from 'animations/Title'
+
+import Hover from 'classes/Hover'
 export default class Page {
   constructor ({
     element,
@@ -15,7 +17,8 @@ export default class Page {
     this.selectorChildren = {
       ...elements,
 
-      animationsTitles: '[data-animations="title"]'
+      animationsTitles: '[data-animations="title"]',
+      hoverItems: '[data-animations="hover"]'
     }
 
     this.scroll = {
@@ -82,6 +85,13 @@ export default class Page {
         element
       })
     })
+
+    this.hoverItems = map(this.elements.hoverItems, element => {
+      return new Hover({
+        element
+      })
+    })
+
     console.log(this.animationsTitles)
   }
 
