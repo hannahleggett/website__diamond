@@ -1,3 +1,5 @@
+import each from 'lodash/each'
+
 import Page from 'classes/Page'
 
 export default class Home extends Page {
@@ -8,7 +10,9 @@ export default class Home extends Page {
       element: '.home',
       elements: {
         navigation: document.querySelector('.navigation'),
-        playToggle: '.home__toggle'
+        playToggle: '.home__toggle',
+        wrapper: '.home__wrapper',
+        workLinks: '.home__list__link'
       }
     })
   }
@@ -16,6 +20,8 @@ export default class Home extends Page {
   create () {
     super.create()
 
-    this.elements.playToggle.addEventListener('click', _ => console.log('Oh, you clicked me'))
+    // console.log(this.element.workLinks)
+
+    // this.elements.playToggle.addEventListener('click', _ => console.log('Oh, you clicked me'))
   }
 }

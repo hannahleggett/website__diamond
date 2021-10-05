@@ -35,6 +35,10 @@
   position: absolute;
   right: 4rem;
   top: 4rem;
+
+  &:last-child {
+    top: 6rem;
+  }
 }
 
 .navigation__list__link {

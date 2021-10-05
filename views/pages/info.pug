@@ -8,8 +8,8 @@ block content
     .info__wrapper
 
       .info__title
-        h2.info__title__text=info.data.title
-        h2.info__title__text__inverse=info.data.title
+        h2.info__title__text(data-animations="title")=info.data.title
+        h2.info__title__text__inverse(data-animations="title")=info.data.title
 
       .info__text__wrapper
         p.info__subhead Info

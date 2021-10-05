@@ -1,8 +1,8 @@
 .info {
   @extend %page;
 
-  // background: $color-cadet-blue;
-  // color: $color-bright-gray;
+  background: rgb(192, 192, 192);
+  color: rgb(32, 32, 32);
 
   &--active {
     @extend %page--active;
@@ -10,14 +10,14 @@
 }
 
 .info__wrapper {
-  
+  height: auto;
 }
 
 .info__text__wrapper {
   display: flex;
   flex-direction: column;
   margin: 0rem 30rem;
-  margin-top: 18rem;
+  padding-top: 18rem;
 }
 
 .info__subhead {
@@ -25,7 +25,7 @@
 }
 
 .info__title {
-  margin: 12rem 0rem;
+  margin: 10rem 0rem;
   position: absolute;
   white-space: nowrap;
 }
@@ -47,7 +47,7 @@
 }
 
 .info__content__line {
-  background-color: black;
+  background-color: currentColor;
   height: 1px;
   width: 100%;
 }
@@ -89,11 +89,12 @@
 
 .info__contact {
   align-items: center;
-  border: 1px black solid;
+  border: 1px currentColor solid;
   display: flex;
   justify-content: space-between;
   padding: 6rem;
   margin-top: 6rem;
+  margin-bottom: 6rem;
 
   @extend %button--hidden
 }

@@ -1,6 +1,7 @@
 .work {
   @extend %page;
   
+  background-color: rgb(160, 61, 61);
   z-index: 'content';
   
   &--active {
