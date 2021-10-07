@@ -4,6 +4,8 @@ import GSAP from 'gsap'
 import NormalizeWheel from 'normalize-wheel'
 import Prefix from 'prefix'
 
+import Description from 'animations/Description'
+import Menutext from 'animations/Menutext'
 import Title from 'animations/Title'
 
 import Hover from 'classes/Hover'
@@ -17,6 +19,8 @@ export default class Page {
     this.selectorChildren = {
       ...elements,
 
+      animationsDescriptions: '[data-animations="description"]',
+      animationsMenutext: '[data-animations="menutext"]',
       animationsTitles: '[data-animations="title"]',
       hoverItems: '[data-animations="hover"]'
     }
@@ -78,21 +82,49 @@ export default class Page {
    * Element Animations.
    */
   createAnimations () {
-    console.log(this.elements.animationsTitles)
+    console.log(this.elements.animationsMenutext)
+    this.animations = []
+
+    this.animationsDescriptions = map(this.elements.animationsDescriptions, element => {
+      return new Description({ element })
+    })
+
+    this.animations.push(...this.animationsDescriptions)
+
+    this.animationsMenutext = map(this.elements.animationsMenutext, element => {
+      return new Menutext({ element })
+    })
+
+    this.animations.push(...this.animationsMenutext)
 
     this.animationsTitles = map(this.elements.animationsTitles, element => {
-      return new Title({
-        element
-      })
+      return new Title({ element })
     })
+
+    this.animations.push(...this.animationsTitles)
 
     this.hoverItems = map(this.elements.hoverItems, element => {
-      return new Hover({
-        element
-      })
+      return new Hover({ element })
     })
 
-    console.log(this.animationsTitles)
+    this.animations.push(...this.hoverItems)
+
+    // console.log(this.animationsTitles)
+  }
+
+  /**
+   * Smooth scroll.
+   */
+  createObserver () {
+    this.observer = new window.ResizeObserver(entries => {
+      for (const entry of entries) { // eslint-disable-line
+        window.requestAnimationFrame(_ => {
+          this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight
+        })
+      }
+    })
+
+    this.observer.observe(this.elements.wrapper)
   }
 
   /**
@@ -145,7 +177,7 @@ export default class Page {
       this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight
     }
 
-    each(this.animationsTitles, animation => animation.onResize())
+    each(this.animations, animation => animation.onResize())
   }
 
   update () {

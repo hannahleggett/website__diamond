@@ -13,6 +13,7 @@
   @extend %cover;
   @extend %center;
 
+  align-items: center;
   display: flex;
   flex-direction: column;
   pointer-events: none;
@@ -20,15 +21,20 @@
 
 .work__text__wrapper {
   align-items: center;
+  bottom: 0;
   display: flex;
-  position: relative;
-  margin-top: 7rem;
+  left: 0;
+  margin-bottom: 3%;
+  margin-left: 3%;
+  position: absolute;
+  vertical-align: middle;
+  width: -webkit-fill-available;
   z-index: 3;
 }
 
 .work__title {
   text-align: center;
-  width: 30rem;
+  margin-right: 2rem;
 } 
 
 .work__title__text {
@@ -41,14 +47,16 @@
 
 .work__info__description {
   align-content: center;
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
-  margin-top: 0.4rem;
   text-align: left;
-  width: 30rem;
+  margin-left: 0.7rem;
+  
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 // .work__info__client {
@@ -67,14 +75,27 @@
 
 // }
 
+.work__info__line {
+  height: 1rem;
+  width: 1px;
+  background-color: black;
+}
 
 .work__info__description__label {
+  @extend %description-14;
   line-height: 1.5;
   font-weight: 400;
 }
 
 .work__info__description__text {
+  @extend %description-14;
   font-weight: 300;
+  margin: 0rem 1rem;
+
+  &:last-child{
+    margin: 0;
+    margin-left: 1rem;
+  }
 }
 
 .work__gallery {
@@ -104,9 +125,9 @@
 
 .work__link {
   position: absolute;
-  bottom: 7rem;
+  bottom: 50%;
   cursor: pointer;
-  left: 7rem;
+  left: 3%;
   pointer-events: auto;
   z-index: 3;
 }

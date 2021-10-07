@@ -53,8 +53,8 @@ img {
   @extend %cover;
 }
 
-[data-animation="title"] {
-
+[data-animations="title"],
+[data-animations="descriptions"] {
   span {
     display: inline-block;
     overflow: hidden;

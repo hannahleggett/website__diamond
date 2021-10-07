@@ -21,11 +21,11 @@ block content
             
             .info__content__text
               if section.slice_type == 'content'
-                h3.info__content__title=section.primary.subheading
+                h3.info__content__title(data-animations="title")=section.primary.subheading
           
                 .info__content__links
                   each item in section.items
-                    a.info__content__link(href=item.link.url)=item.text
+                    a.info__content__link(href=item.link.url data-animations="description")=item.text
 
                     .info__content__hover  
                       figure.info__content__media

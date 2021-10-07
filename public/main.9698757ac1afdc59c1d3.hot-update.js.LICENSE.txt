@@ -1,0 +1,21 @@
+/*! animations/Description */
+
+/*! animations/Menutext */
+
+/*! animations/Title */
+
+/*! classes/Hover */
+
+/*! gsap */
+
+/*! lodash/each */
+
+/*! lodash/map */
+
+/*! normalize-wheel */
+
+/*! prefix */
+
+/*!*****************************!*\
+  !*** ./app/classes/Page.js ***!
+  \*****************************/

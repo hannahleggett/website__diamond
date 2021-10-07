@@ -1,7 +1,6 @@
 import Component from 'classes/Component'
 import GSAP from 'gsap'
 import { getMousePos } from 'utils/utils'
-
 export default class Animation extends Component {
   constructor ({ element }) {
     super({
@@ -11,6 +10,7 @@ export default class Animation extends Component {
     this.addEventListeners()
 
     this.DOM = this.element
+    this.CLASS = document.querySelector('.hover__images')
     this.element.image = element.getAttribute('data-src')
 
     // create the image structure
@@ -34,20 +34,21 @@ export default class Animation extends Component {
 
     this.DOM.revealInner.appendChild(this.DOM.revealImage)
     this.DOM.reveal.appendChild(this.DOM.revealInner)
-    this.DOM.el.appendChild(this.DOM.reveal)
+    this.CLASS.appendChild(this.DOM.reveal)
   }
 
   initEvents (ev) {
     this.positionElement = (ev) => {
       const mousePos = getMousePos(ev)
       const docScrolls = {
-        left: document.body.scrollLeft + document.documentElement.scrollLeft,
+        // left: document.body.scrollLeft + document.documentElement.scrollLeft,
         top: document.body.scrollTop + document.documentElement.scrollTop
       }
       // this.DOM.reveal.style.mixBlendMode = 'overlay'
-      // this.DOM.reveal.style.left = `${mousePos.x+20-docScrolls.left}px`;
-      // this.DOM.reveal.style.top = `${mousePos.y-20-docScrolls.top}px`;
-      // this.DOM.reveal.style.left = `${mousePos.x+20-docScrolls.left}px`;
+      // this.DOM.reveal.style.left = `${mousePos.x + 20 - docScrolls.left}px`
+      // this.DOM.reveal.style.top = `${mousePos.y - 20 - docScrolls.top}px`
+      this.DOM.reveal.style.top = `${docScrolls.top}px`
+      // this.DOM.reveal.style.left = `${mousePos.x + 20 - docScrolls.left}px`
     }
     this.mouseenterFn = (ev) => {
       this.positionElement(ev)
@@ -77,6 +78,7 @@ export default class Animation extends Component {
         this.DOM.reveal.style.opacity = 1
         // set a high z-index value so image appears on top of other elements
         GSAP.set(this.DOM.el, { zIndex: 1000 })
+        GSAP.set(this.DOM.revealImage, { scale: 1.01 })
       }
     })
     // animate the image wrap
@@ -93,6 +95,10 @@ export default class Animation extends Component {
         startAt: { x: '100%' },
         x: '0%'
       }, 0)
+      .to(this.DOM.revealImage, {
+        ease: 'sine.inOut',
+        scale: 1
+      }, 0.3)
   }
 
   // hide the image element
@@ -118,7 +124,8 @@ export default class Animation extends Component {
       .to(this.DOM.revealImage, {
         duration: 0.7,
         ease: 'expo.inOut',
-        x: '-100%'
+        x: '-100%',
+        scale: 1.01
       }, 0)
   }
 

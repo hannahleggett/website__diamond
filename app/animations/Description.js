@@ -1,20 +1,22 @@
 import GSAP from 'gsap'
-import { calculate, split } from 'utils/text'
+
 import each from 'lodash/each'
 
 import Animation from 'classes/Animation'
 
-export default class Title extends Animation {
+import { calculate, split } from 'utils/text'
+
+export default class Description extends Animation {
   constructor ({ element, elements }) {
     super({
       element,
       elements
     })
 
-    split({ element: this.element })
-    split({ element: this.element })
-
-    this.elementLinesSpans = this.element.querySelectorAll('span span')
+    this.elementLinesSpans = split({
+      append: true,
+      element: this.element
+    })
   }
 
   animateIn () {
@@ -27,9 +29,11 @@ export default class Title extends Animation {
 
     each(this.elementsLines, (line, index) => {
       this.timelineIn.fromTo(line, {
+        autoAlpha: 0,
         y: '100%'
       }, {
-        delay: 0.5 + index * 2,
+        autoAlpha: 1,
+        delay: index * 0.2,
         duration: 1.5,
         ease: 'expo.out',
         y: '0%'
