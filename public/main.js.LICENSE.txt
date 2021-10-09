@@ -236,8 +236,6 @@
 
 /*! ./clients/WebSocketClient.js */
 
-/*! ./components/Preloader */
-
 /*! ./createConsoleLogger */
 
 /*! ./decode */
@@ -334,6 +332,8 @@
 
 /*! animations/Description */
 
+/*! animations/Hover */
+
 /*! animations/Menutext */
 
 /*! animations/Title */
@@ -346,9 +346,11 @@
 
 /*! classes/Component */
 
-/*! classes/Hover */
-
 /*! classes/Page */
+
+/*! components/Navigation */
+
+/*! components/Preloader */
 
 /*! events */
 
@@ -416,9 +418,9 @@
   !*** ./app/classes/Page.js ***!
   \*****************************/
 
-/*!******************************!*\
-  !*** ./app/classes/Hover.js ***!
-  \******************************/
+/*!*********************************!*\
+  !*** ./app/animations/Hover.js ***!
+  \*********************************/
 
 /*!*********************************!*\
   !*** ./app/animations/Title.js ***!
@@ -495,6 +497,10 @@
 /*!*************************************!*\
   !*** ./node_modules/lodash/keys.js ***!
   \*************************************/
+
+/*!**************************************!*\
+  !*** ./app/components/Navigation.js ***!
+  \**************************************/
 
 /*!**************************************!*\
   !*** ./node_modules/lodash/_Hash.js ***!

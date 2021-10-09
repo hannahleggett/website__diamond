@@ -21,7 +21,7 @@ export default class Description extends Animation {
 
   animateIn () {
     this.timelineIn = GSAP.timeline({
-      delay: 0.5
+      delay: 1
     })
     this.timelineIn.set(this.element, {
       autoAlpha: 1

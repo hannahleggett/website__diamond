@@ -24,30 +24,29 @@
 }
 
 .home__list {
-  position: relative;
-  // padding-bottom: 10%;
   padding-left: 4rem;
-  // padding-top: 50rem
+  pointer-events: none;
+  position: relative;
+  transition: all 0.7s ease-in-out;
+  width: fit-content;
+
+  &:hover > .home__list__link:not(:hover) {
+    opacity: 0.3;
+  }
 }
 
 .home__list__link {
   cursor: pointer;
   display: flex;
   opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.7s ease-in-out;
   width: fit-content;
 
   &:not(:first-child){
     margin-top: 0.4rem;
   }
-  
-  &:hover .home__list__link__text {
-    opacity: 1;
 
-    &:not(:hover) {
-      opacity: 0.2;
-    }
-  }
 }
 
 .home__list__link__text {

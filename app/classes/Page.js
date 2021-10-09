@@ -8,7 +8,7 @@ import Description from 'animations/Description'
 import Menutext from 'animations/Menutext'
 import Title from 'animations/Title'
 
-import Hover from 'classes/Hover'
+import Hover from 'animations/Hover'
 export default class Page {
   constructor ({
     element,
@@ -82,7 +82,6 @@ export default class Page {
    * Element Animations.
    */
   createAnimations () {
-    console.log(this.elements.animationsMenutext)
     this.animations = []
 
     this.animationsDescriptions = map(this.elements.animationsDescriptions, element => {
@@ -109,7 +108,7 @@ export default class Page {
 
     this.animations.push(...this.hoverItems)
 
-    // console.log(this.animationsTitles)
+    // console.log(this.animations)
   }
 
   /**
@@ -177,7 +176,9 @@ export default class Page {
       this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight
     }
 
-    each(this.animations, animation => animation.onResize())
+    each(this.animations, animation => {
+      animation.onResize && animation.onResize()
+    })
   }
 
   update () {

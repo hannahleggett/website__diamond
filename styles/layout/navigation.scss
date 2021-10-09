@@ -15,6 +15,7 @@
   position: absolute;
   top: 4rem;
   transition: color 0.4s ease;
+  vertical-align: center;
   width: 5.5rem;
 
   &:hover {
@@ -35,10 +36,6 @@
   position: absolute;
   right: 4rem;
   top: 4rem;
-
-  &:last-child {
-    top: 6rem;
-  }
 }
 
 .navigation__list__link {
