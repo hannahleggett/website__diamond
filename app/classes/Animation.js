@@ -7,9 +7,15 @@ export default class Animation extends Component {
       elements
     })
 
-    this.createObserver()
+    this.isVisible = false
 
-    this.animateOut()
+    if ('IntersectionObserver' in window) {
+      this.createObserver()
+
+      this.animateOut()
+    } else {
+      this.animateIn()
+    }
   }
 
   createObserver () {
@@ -27,11 +33,11 @@ export default class Animation extends Component {
   }
 
   animateIn () {
-
+    this.isVisible = true
   }
 
   animateOut () {
-
+    this.isVisible = false
   }
 
   onResize () {

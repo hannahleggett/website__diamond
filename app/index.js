@@ -12,7 +12,7 @@ class App {
   constructor () {
     this.createContent()
 
-    this.createPreloader()
+    this.createPreloaders()
     this.createNavigation()
     this.createPages()
 
@@ -24,10 +24,12 @@ class App {
 
   // create components
   createNavigation () {
-    this.navigation = new Navigation({ template: this.template })
+    this.navigation = new Navigation({
+      template: this.template
+    })
   }
 
-  createPreloader () {
+  createPreloaders () {
     this.preloader = new Preloader()
     this.preloader.once('completed', this.onPreloaded.bind(this))
   }
@@ -66,14 +68,25 @@ class App {
     // console.log('Preloaded!')
   }
 
-  async onChange (url) {
-    this.page.hide()
+  onPopState () {
+    this.onChange({
+      url: window.location.pathname,
+      push: false
+    })
+  }
+
+  async onChange ({ url, push = true }) {
+    await this.page.hide()
 
     const request = await window.fetch(url)
 
     if (request.status === 200) {
       const html = await request.text()
       const div = document.createElement('div')
+
+      if (push) {
+        window.history.pushState({}, '', url)
+      }
 
       div.innerHTML = html
 
@@ -121,6 +134,8 @@ class App {
    * Listeners.
    */
   addEventListeners () {
+    window.addEventListener('popstate', this.onPopState.bind(this))
+
     window.addEventListener('resize', this.onResize.bind(this))
   }
 
@@ -132,7 +147,7 @@ class App {
         const { href } = link
         event.preventDefault()
 
-        this.onChange(href)
+        this.onChange({ url: href })
       }
     })
   }

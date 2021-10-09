@@ -9,6 +9,8 @@ import Menutext from 'animations/Menutext'
 import Title from 'animations/Title'
 
 import Hover from 'animations/Hover'
+
+import AsyncLoad from 'classes/AsyncLoad'
 export default class Page {
   constructor ({
     element,
@@ -22,7 +24,9 @@ export default class Page {
       animationsDescriptions: '[data-animations="description"]',
       animationsMenutext: '[data-animations="menutext"]',
       animationsTitles: '[data-animations="title"]',
-      hoverItems: '[data-animations="hover"]'
+      hoverItems: '[data-animations="hover"]',
+
+      preloaders: '[data-src]'
     }
 
     this.scroll = {
@@ -73,6 +77,7 @@ export default class Page {
     })
 
     this.createAnimations()
+    this.createPreloaders()
 
     // console.log(this.elements)
     // console.log('Create', this.id, this.element)
@@ -126,6 +131,12 @@ export default class Page {
     this.observer.observe(this.elements.wrapper)
   }
 
+  createPreloaders () {
+    this.preloaders = map(this.elements.preloaders, element => {
+      return new AsyncLoad({ element })
+    })
+  }
+
   /**
    * Page Animations.
    */
@@ -171,6 +182,9 @@ export default class Page {
     this.scroll.target += pixelY
   }
 
+  /**
+   * Events.
+   */
   onResize () {
     if (this.elements.wrapper) {
       this.scroll.limit = this.elements.wrapper.clientHeight - window.innerHeight
@@ -181,6 +195,9 @@ export default class Page {
     })
   }
 
+  /**
+   * Loop.
+   */
   update () {
     this.scroll.target = GSAP.utils.clamp(0, this.scroll.limit, this.scroll.target)
 
@@ -200,7 +217,6 @@ export default class Page {
   /**
    * Listeners.
    */
-
   addEventListeners () {
     window.addEventListener('mousewheel', this.onMouseWheelEvent)
   }
