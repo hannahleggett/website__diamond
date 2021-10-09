@@ -9,6 +9,7 @@ import Menutext from 'animations/Menutext'
 import Title from 'animations/Title'
 
 import Hover from 'animations/Hover'
+import ImageReveal from 'animations/ImageReveal'
 
 import AsyncLoad from 'classes/AsyncLoad'
 export default class Page {
@@ -25,6 +26,7 @@ export default class Page {
       animationsMenutext: '[data-animations="menutext"]',
       animationsTitles: '[data-animations="title"]',
       hoverItems: '[data-animations="hover"]',
+      imageReveal: '[data-animations="imageReveal"]',
 
       preloaders: '[data-src]'
     }
@@ -112,6 +114,12 @@ export default class Page {
     })
 
     this.animations.push(...this.hoverItems)
+
+    this.imageReveal = map(this.elements.imageReveal, element => {
+      return new ImageReveal({ element })
+    })
+
+    this.animations.push(...this.imageReveal)
 
     // console.log(this.animations)
   }

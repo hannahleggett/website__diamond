@@ -90,6 +90,9 @@ app.get('/', async (req, res) => {
   // home.forEach(item => {
   //   console.log(item.data.projects[0].project)
   // })
+  // home.forEach(item => {
+  //   console.log(item.data.link)
+  // })
 
   // Render your views here.
   res.render('pages/home', {

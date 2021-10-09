@@ -1,16 +1,17 @@
 .info {
-  @extend %page;
+  // @extend %page;
 
   background: rgb(192, 192, 192);
   color: rgb(32, 32, 32);
 
-  &--active {
-    @extend %page--active;
-  }
+  // &--active {
+  //   @extend %page--active;
+  // }
 }
 
 .info__wrapper {
   height: auto;
+  // overflow-x: scroll;
 }
 
 .info__text__wrapper {
@@ -172,4 +173,32 @@
   height: 6rem;
   transform: scaleX(-1);
   width: 6rem;
+}
+
+.image-reveal {
+	position: absolute;
+	width: 22rem;
+	height: 22rem;
+	top: 0;
+	left: 0;
+  // mix-blend-mode: exclusion;
+	pointer-events: none;
+	opacity: 0;
+  // z-index: -1;
+}
+
+.image-reveal__inner {
+	overflow: hidden;
+}
+
+.image-reveal__inner,
+.image-reveal__img {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.image-reveal__img {
+	background-size: cover;
+	background-position: 50% 50%;
 }

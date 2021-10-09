@@ -81,9 +81,10 @@
 
   align-items: center;
   background-color: white;
-  bottom: 0;
+  bottom: -17px;
   display: flex;
   justify-content: center;
+  mix-blend-mode: overlay;
   padding: 0.5rem 0rem;
   position: absolute;
   width: 100%;
@@ -92,6 +93,7 @@
   
   &:hover {
     background-color: $color-accent-lime;
+    bottom: 0;
   }
 }
 

@@ -35,11 +35,12 @@ block content
           
                 .info__content__links
                   each item in section.items
-                    a.info__content__link(href=item.link.url data-animations="description")=item.text
+                    a.info__content__link.image-reveal__images(href=item.link.url data-src=item.image.url data-animations="imageReveal")=item.text
 
-                    .info__content__hover  
-                      figure.info__content__media
-                        img.info__content__media__image(data-src=item.image.url)
+                    .info__images
+                      .info__content__hover  
+                        figure.info__content__media
+                          img.info__content__media__image(data-src=item.image.url)
 
         .info__contact
           each section in info.data.body

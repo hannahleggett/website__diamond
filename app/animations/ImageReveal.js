@@ -1,6 +1,8 @@
-import Component from 'classes/Component'
 import GSAP from 'gsap'
-import { getMousePos } from 'utils/utils'
+import { getMousePos, lerp } from 'utils/utils'
+
+import Component from 'classes/Component'
+
 export default class Hover extends Component {
   constructor ({ element }) {
     super({
@@ -10,44 +12,47 @@ export default class Hover extends Component {
     this.addEventListeners()
 
     this.DOM = this.element
-    this.CLASS = document.querySelector('.hover__images')
     this.element.image = element.getAttribute('data-src')
 
     // create the image structure
     this.layout(this.element)
     // initialize some events
     this.initEvents()
+
+    // console.log(this.element)
   }
 
   layout (el) {
     this.DOM = { el: el }
     // this is the element that gets its position animated (and perhaps other properties like the rotation etc..)
     this.DOM.reveal = document.createElement('div')
-    this.DOM.reveal.className = 'hover-reveal'
+    this.DOM.reveal.className = 'image-reveal'
     // the next two elements could actually be only one, the image element
     // adding an extra wrapper (revealInner) around the image element with overflow hidden, gives us the possibility to scale the image inside
     this.DOM.revealInner = document.createElement('div')
-    this.DOM.revealInner.className = 'hover-reveal__inner'
+    this.DOM.revealInner.className = 'image-reveal__inner'
     this.DOM.revealImage = document.createElement('div')
-    this.DOM.revealImage.className = 'hover-reveal__img'
+    this.DOM.revealImage.className = 'image-reveal__img'
     this.DOM.revealImage.style.backgroundImage = `url(${this.element.image})`
 
     this.DOM.revealInner.appendChild(this.DOM.revealImage)
     this.DOM.reveal.appendChild(this.DOM.revealInner)
-    this.CLASS.appendChild(this.DOM.reveal)
+    this.DOM.el.appendChild(this.DOM.reveal)
   }
 
   initEvents (ev) {
     this.positionElement = (ev) => {
-      // const mousePos = getMousePos(ev)
+      const mousePos = getMousePos(ev)
+      // console.log(mousePos)
       const docScrolls = {
-        // left: document.body.scrollLeft + document.documentElement.scrollLeft,
+        left: document.body.scrollLeft + document.documentElement.scrollLeft,
         top: document.body.scrollTop + document.documentElement.scrollTop
       }
       // this.DOM.reveal.style.mixBlendMode = 'overlay'
-      // this.DOM.reveal.style.left = `${mousePos.x + 20 - docScrolls.left}px`
-      // this.DOM.reveal.style.top = `${mousePos.y - 20 - docScrolls.top}px`
-      this.DOM.reveal.style.top = `${docScrolls.top}px`
+      this.DOM.reveal.style.left = `${mousePos.x - 1000}px`
+      this.DOM.reveal.style.top = `${-150}%`
+      // this.DOM.reveal.style.top = `${mousePos.y - 500}px`
+      // this.DOM.reveal.style.top = `${docScrolls.top}px`
       // this.DOM.reveal.style.left = `${mousePos.x + 20 - docScrolls.left}px`
     }
     this.mouseenterFn = (ev) => {
@@ -83,9 +88,11 @@ export default class Hover extends Component {
     })
     // animate the image wrap
       .to(this.DOM.revealInner, {
+        autoAlpha: 1,
         duration: 0.7,
         ease: 'expo.inOut',
-        startAt: { x: '-100%' },
+        rotate: 5,
+        startAt: { x: '-100%', autoAlpha: 0 },
         x: '0%'
       })
     // animate the image element
@@ -117,8 +124,10 @@ export default class Hover extends Component {
       }
     })
       .to(this.DOM.revealInner, {
+        autoAlpha: 0,
         duration: 0.7,
         ease: 'expo.inOut',
+        rotate: 0,
         x: '100%'
       })
       .to(this.DOM.revealImage, {
