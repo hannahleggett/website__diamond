@@ -11,6 +11,7 @@ import Hover from 'animations/Hover'
 import ImageReveal from 'animations/ImageReveal'
 
 import AsyncLoad from 'classes/AsyncLoad'
+import { ColorsManager } from 'classes/Colors'
 export default class Page {
   constructor ({
     element,
@@ -150,6 +151,11 @@ export default class Page {
 
   show () {
     return new Promise(resolve => {
+      ColorsManager.change({
+        backgroundColor: this.element.getAttribute('data-background'),
+        color: this.element.getAttribute('data-color')
+      })
+
       this.animationIn = GSAP.timeline()
 
       this.animationIn.fromTo(this.element, {

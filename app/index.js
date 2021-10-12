@@ -109,6 +109,9 @@ class App {
 
       this.template = divContent.getAttribute('data-template')
 
+      this.background = divContent.getAttribute('data-background')
+      this.color = divContent.getAttribute('data-color')
+
       this.navigation.onChange(this.template)
 
       this.content.setAttribute('data-template', this.template)
