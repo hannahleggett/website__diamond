@@ -1,4 +1,7 @@
 import { each } from 'lodash'
+import NormalizeWheel from 'normalize-wheel'
+
+import Canvas from 'components/Canvas'
 
 import Navigation from 'components/Navigation'
 import Preloader from 'components/Preloader'
@@ -14,10 +17,13 @@ class App {
 
     this.createPreloaders()
     this.createNavigation()
+    this.createCanvas()
     this.createPages()
 
     this.addEventListeners()
     this.addLinkListeners()
+
+    this.onResize()
 
     this.update()
   }
@@ -32,6 +38,12 @@ class App {
   createPreloaders () {
     this.preloader = new Preloader()
     this.preloader.once('completed', this.onPreloaded.bind(this))
+  }
+
+  createCanvas () {
+    this.canvas = new Canvas({
+      template: this.template
+    })
   }
 
   // initialise content
@@ -54,10 +66,10 @@ class App {
 
     // console.log(this.page)
   }
+
   /**
    * Preloader.
    */
-
   onPreloaded () {
     this.preloader.destroy()
 
@@ -68,6 +80,9 @@ class App {
     // console.log('Preloaded!')
   }
 
+  /**
+   * History API.
+   */
   onPopState () {
     this.onChange({
       url: window.location.pathname,
@@ -113,9 +128,60 @@ class App {
     }
   }
 
+  /**
+   * Events.
+   */
   onResize () {
     if (this.page && this.page.onResize) {
       this.page.onResize()
+    }
+
+    window.requestAnimationFrame(_ => {
+      if (this.canvas && this.canvas.onResize) {
+        this.canvas.onResize()
+      }
+    })
+  }
+
+  onTouchDown (event) {
+    if (this.canvas && this.canvas.onTouchDown) {
+      this.canvas.onTouchDown(event)
+    }
+
+    if (this.page && this.page.onTouchDown) {
+      this.page.onTouchDown(event)
+    }
+  }
+
+  onTouchMove (event) {
+    if (this.canvas && this.canvas.onTouchMove) {
+      this.canvas.onTouchMove(event)
+    }
+
+    if (this.page && this.page.onTouchMove) {
+      this.page.onTouchMove(event)
+    }
+  }
+
+  onTouchUp (event) {
+    if (this.canvas && this.canvas.onTouchUp) {
+      this.canvas.onTouchUp(event)
+    }
+
+    if (this.page && this.page.onTouchUp) {
+      this.page.onTouchUp(event)
+    }
+  }
+
+  onWheel (event) {
+    const normalizedWheel = NormalizeWheel(event)
+
+    if (this.canvas && this.canvas.update) {
+      this.canvas.onWheel(normalizedWheel)
+    }
+
+    if (this.page && this.page.update) {
+      this.page.onWheel(normalizedWheel)
     }
   }
 
@@ -123,6 +189,10 @@ class App {
    * Frames.
    */
   update () {
+    if (this.canvas && this.canvas.update) {
+      this.canvas.update()
+    }
+
     if (this.page && this.page.update) {
       this.page.update()
     }
@@ -134,6 +204,16 @@ class App {
    * Listeners.
    */
   addEventListeners () {
+    window.addEventListener('mousewheel', this.onWheel.bind(this))
+
+    window.addEventListener('mousedown', this.onTouchDown.bind(this))
+    window.addEventListener('mousemove', this.onTouchMove.bind(this))
+    window.addEventListener('mouseup', this.onTouchUp.bind(this))
+
+    window.addEventListener('touchstart', this.onTouchDown.bind(this))
+    window.addEventListener('touchmove', this.onTouchMove.bind(this))
+    window.addEventListener('touchend', this.onTouchUp.bind(this))
+
     window.addEventListener('popstate', this.onPopState.bind(this))
 
     window.addEventListener('resize', this.onResize.bind(this))
