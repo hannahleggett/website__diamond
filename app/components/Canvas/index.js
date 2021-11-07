@@ -25,7 +25,7 @@ export default class Canvas {
 
     this.onResize()
 
-    this.onRouteUpdate(this.template)
+    // this.onChangeEnd(this.template)
   }
 
   createRenderer () {
@@ -48,6 +48,10 @@ export default class Canvas {
     this.scene = new Transform()
   }
 
+  /**
+   * Play.
+   */
+
   createPlay () {
     this.play = new Play({
       gl: this.gl,
@@ -62,6 +66,10 @@ export default class Canvas {
     this.play.destroy()
     this.play = null
   }
+
+  /**
+   * Work.
+   */
 
   createWork () {
     this.work = new Work({
@@ -81,17 +89,27 @@ export default class Canvas {
   /**
    * Events.
    */
-  onRouteUpdate (template) {
+  onChangeStart () {
+    if (this.play) {
+      this.play.hide()
+    }
+
+    if (this.work) {
+      this.work.hide()
+    }
+  }
+
+  onChangeEnd (template) {
+    if (template === 'work') {
+      this.createWork()
+    } else if (this.work) {
+      this.destroyWork()
+    }
+
     if (template === 'play') {
       this.createPlay()
     } else {
       this.destroyPlay()
-    }
-
-    if (template === 'work') {
-      this.createWork()
-    } else {
-      this.destroyWork()
     }
   }
 

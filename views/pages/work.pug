@@ -4,38 +4,40 @@ block variables
   - var template = 'work'
 
 block content 
-  .work(data-background="#a03d3d" data-color="#000")
-    .work__wrapper
+  .work__wrapper
+    each media in work.data.gallery
+      .work(data-background=work.data.background data-color="#000")
 
-      .work__gallery
+    .work__gallery
+      .work__gallery__wrapper
         each media in work.data.gallery
           figure.work__gallery__media
             img(data-src=media.image.url, alt=media.image.alt).work__gallery__media__image
 
-      .work__text__wrapper
-        .work__title 
-          h2.work__title__text=work.data.title  
-          
-        .work__info
-          .work__info__client.work__info__description
-            p.work__info__description__label Client:
-            p.work__info__description__text=work.data.label_client
+    .work__text__wrapper
+      .work__title 
+        h2.work__title__text=work.data.title  
+        
+      .work__info
+        .work__info__client.work__info__description
+          p.work__info__description__label Client:
+          p.work__info__description__text=work.data.label_client
 
-            span.work__info__line
+          span.work__info__line
 
-          //- .work__info__date.work__info__description
-          //-   p.work__info__description__label Date:
-          //-   p.work__info__description__text=work.data.label_date
+        //- .work__info__date.work__info__description
+        //-   p.work__info__description__label Date:
+        //-   p.work__info__description__text=work.data.label_date
 
-          .work__info__type.work__info__description
-            p.work__info__description__label Type:
-            p.work__info__description__text=work.data.label_type
+        .work__info__type.work__info__description
+          p.work__info__description__label Type:
+          p.work__info__description__text=work.data.label_type
 
-            span.work__info__line
+          span.work__info__line
 
-          .work__info__role.work__info__description
-            p.work__info__description__label Role:
-            p.work__info__description__text=work.data.label_role
+        .work__info__role.work__info__description
+          p.work__info__description__label Role:
+          p.work__info__description__text=work.data.label_role
 
       //- a(href=Link('home')).work__link 
       //-   svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.8 16.5").work__link__icon

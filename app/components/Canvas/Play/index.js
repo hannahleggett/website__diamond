@@ -1,12 +1,14 @@
 import { Plane, Transform } from 'ogl'
-import { map } from 'lodash'
 import GSAP from 'gsap'
+
+import { map } from 'lodash'
 
 import Media from './Media'
 
 export default class {
   constructor ({ gl, scene, sizes }) {
     this.gl = gl
+    this.scene = scene
     this.sizes = sizes
 
     this.group = new Transform()
@@ -15,8 +17,6 @@ export default class {
     this.mediasElements = document.querySelectorAll('.play__gallery__media__image')
 
     // console.log(this.galleryElement)
-
-    this.group.setParent(scene)
 
     this.x = {
       current: 0,
@@ -42,6 +42,10 @@ export default class {
 
     this.createGeometry()
     this.createGallery()
+
+    this.group.setParent(this.scene)
+
+    this.show()
   }
 
   createGeometry () {
@@ -62,6 +66,17 @@ export default class {
   }
 
   /**
+   * Animations.
+   */
+  show () {
+    map(this.medias, media => media.show())
+  }
+
+  hide () {
+    map(this.medias, media => media.hide())
+  }
+
+  /**
    * Events.
    */
   onResize (event) {
@@ -72,8 +87,8 @@ export default class {
     this.sizes = event.sizes
 
     this.gallerySizes = {
-      width: this.galleryBounds.width / window.innerWidth * this.sizes.width,
-      height: this.galleryBounds.height / window.innerHeight * this.sizes.height
+      height: this.galleryBounds.height / window.innerHeight * this.sizes.height,
+      width: this.galleryBounds.width / window.innerWidth * this.sizes.width
     }
 
     this.scroll.x = this.x.target = 0
@@ -179,6 +194,7 @@ export default class {
    * Destroy.
    */
   destroy () {
-    // this.group.setParent(null)
+    // map(this.medias, media => media.destroy())
+    this.scene.removeChild(this.group)
   }
 }

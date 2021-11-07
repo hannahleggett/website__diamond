@@ -1,5 +1,5 @@
 import { Mesh, Program, Texture } from 'ogl'
-// import GSAP from 'gsap'
+import GSAP from 'gsap'
 
 import fragment from 'shaders/plane-fragment.glsl'
 import vertex from 'shaders/plane-vertex.glsl'
@@ -16,6 +16,9 @@ export default class {
     this.createTexture()
     this.createProgram()
     this.createMesh()
+    // this.createBounds({
+    //   sizes: this.sizes
+    // })
 
     this.extra = {
       x: 0,
@@ -26,9 +29,9 @@ export default class {
   createTexture () {
     this.texture = new Texture(this.gl)
 
-    // console.log(this.element)
+    const image = this.element.querySelector('.work__gallery__media__image')
 
-    const image = this.element.querySelector('img')
+    // console.log(this.element)
 
     this.image = new window.Image()
     this.image.crossOrigin = 'anonymous'
@@ -41,6 +44,7 @@ export default class {
       fragment,
       vertex,
       uniforms: {
+        uAlpha: { value: 0 },
         tMap: { value: this.texture }
       }
     })
@@ -53,8 +57,6 @@ export default class {
     })
 
     this.mesh.setParent(this.scene)
-
-    // this.mesh.rotation.z = GSAP.utils.random(-Math.PI * 0.01, Math.PI * 0.01)
   }
 
   createBounds ({ sizes }) {
@@ -62,9 +64,28 @@ export default class {
 
     this.bounds = this.element.getBoundingClientRect()
 
-    this.updateScale(sizes)
+    // console.log(this.bounds)
+
+    this.updateScale()
     this.updateX()
     this.updateY()
+  }
+
+  /**
+   * Animations.
+   */
+  show () {
+    GSAP.fromTo(this.program.uniforms.uAlpha, {
+      value: 0
+    }, {
+      value: 1
+    })
+  }
+
+  hide () {
+    GSAP.to(this.program.uniforms.uAlpha, {
+      value: 0
+    })
   }
 
   /**
@@ -108,6 +129,10 @@ export default class {
     if (!this.bounds) return
 
     this.updateX(scroll)
-    this.updateY(0)
+    this.updateY()
   }
+
+  // destroy () {
+  //   this.scene.removeChild(this.group)
+  // }
 }

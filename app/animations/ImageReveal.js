@@ -91,7 +91,7 @@ export default class Hover extends Component {
         autoAlpha: 1,
         duration: 0.7,
         ease: 'expo.inOut',
-        rotate: 5,
+        // rotate: 5,
         startAt: { x: '-100%', autoAlpha: 0 },
         x: '0%'
       })
@@ -127,7 +127,7 @@ export default class Hover extends Component {
         autoAlpha: 0,
         duration: 0.7,
         ease: 'expo.inOut',
-        rotate: 0,
+        // rotate: 0,
         x: '100%'
       })
       .to(this.DOM.revealImage, {
