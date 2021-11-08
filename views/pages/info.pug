@@ -7,32 +7,28 @@ block content
   .info(data-background="#c0c0c0" data-color="#202020")
     .info__wrapper
 
-      .info__title
-        .info__title__marquee
-          .marquee__inner
-            h2.info__title__text(data-animations="title")=info.data.title
-            h2.info__title__text=info.data.title
-            h2.info__title__text=info.data.title
-            h2.info__title__text=info.data.title
-        .info__title__inverse__marquee
-          .marquee__inner
-            h2.info__title__text__inverse(data-animations="title")=info.data.title
-            h2.info__title__text__inverse=info.data.title
-            h2.info__title__text__inverse=info.data.title
-            h2.info__title__text__inverse=info.data.title
+      //- .info__title
+      //-   .info__title__marquee
+      //-     .marquee__inner
+      //-       h2.info__title__text(data-animations="title")=info.data.title
+      //-       h2.info__title__text=info.data.title
+      //-       h2.info__title__text=info.data.title
+      //-       h2.info__title__text=info.data.title
+      //-   .info__title__inverse__marquee
+      //-     .marquee__inner
+      //-       h2.info__title__text__inverse(data-animations="title")=info.data.title
+      //-       h2.info__title__text__inverse=info.data.title
+      //-       h2.info__title__text__inverse=info.data.title
+      //-       h2.info__title__text__inverse=info.data.title
 
       .info__text__wrapper
-        p.info__subhead Info
+        //- p.info__subhead Info
         //- .info__content__line
 
         .info__content
-          each section in info.data.body
-            //- .info__content__line
-            
-            .info__content__text
+          .info__content__text
+            each section in info.data.body
               if section.slice_type == 'content'
-                h3.info__content__title(data-animations="title")=section.primary.subheading
-          
                 .info__content__links
                   each item in section.items
                     a.info__content__link.image-reveal__images(href=item.link.url data-src=item.image.url data-animations="imageReveal")=item.text
@@ -42,10 +38,10 @@ block content
                         figure.info__content__media
                           img.info__content__media__image(data-src=item.image.url)
 
-        .info__contact
-          each section in info.data.body
-            if section.slice_type == 'contact'
-              a.info__contact__title(href=section.primary.link.url data-animations="title")=section.primary.prompt
-                      a(href=section.primary.link.url).info__contact__link 
-                        svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.8 16.5").info__contact__link__item
-                          path(fill="#000" d="M9.9,3.3H6.6V0H9.9Zm0,13.2V13.2H6.6v3.3Zm9.9-6.6V6.6H6.6V3.3H3.3V6.6H0V9.9H3.3v3.3H6.6V9.9Z")
+        //- .info__contact
+        //-   each section in info.data.body
+        //-     if section.slice_type == 'contact'
+        //-       a.info__contact__title(href=section.primary.link.url data-animations="title")=section.primary.prompt
+        //-               a(href=section.primary.link.url).info__contact__link 
+        //-                 svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.8 16.5").info__contact__link__item
+        //-                   path(fill="#000" d="M9.9,3.3H6.6V0H9.9Zm0,13.2V13.2H6.6v3.3Zm9.9-6.6V6.6H6.6V3.3H3.3V6.6H0V9.9H3.3v3.3H6.6V9.9Z")

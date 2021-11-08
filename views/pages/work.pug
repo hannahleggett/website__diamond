@@ -19,24 +19,14 @@ block content
         h2.work__title__text=work.data.title  
         
       .work__info
-        .work__info__client.work__info__description
-          p.work__info__description__label Client:
+        //- .work__info__description
+        //-   p.work__info__description__label Client 
+        //-   p.work__info__description__label Type 
+        //-   p.work__info__description__label Role 
+
+        .work__info__description
           p.work__info__description__text=work.data.label_client
-
-          span.work__info__line
-
-        //- .work__info__date.work__info__description
-        //-   p.work__info__description__label Date:
-        //-   p.work__info__description__text=work.data.label_date
-
-        .work__info__type.work__info__description
-          p.work__info__description__label Type:
           p.work__info__description__text=work.data.label_type
-
-          span.work__info__line
-
-        .work__info__role.work__info__description
-          p.work__info__description__label Role:
           p.work__info__description__text=work.data.label_role
 
       //- a(href=Link('home')).work__link 

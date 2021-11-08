@@ -1,5 +1,5 @@
 import GSAP from 'gsap'
-import { getMousePos, lerp } from 'utils/utils'
+// import { getMousePos, lerp } from 'utils/utils'
 
 import Component from 'classes/Component'
 
@@ -33,34 +33,38 @@ export default class Hover extends Component {
     this.DOM.revealInner.className = 'image-reveal__inner'
     this.DOM.revealImage = document.createElement('div')
     this.DOM.revealImage.className = 'image-reveal__img'
+    // this.DOM.revealShape = document.createElement('div')
+    // this.DOM.revealShape.className = 'image-reveal__shape'
     this.DOM.revealImage.style.backgroundImage = `url(${this.element.image})`
 
     this.DOM.revealInner.appendChild(this.DOM.revealImage)
+    // this.DOM.revealInner.appendChild(this.DOM.revealShape)
     this.DOM.reveal.appendChild(this.DOM.revealInner)
     this.DOM.el.appendChild(this.DOM.reveal)
   }
 
   initEvents (ev) {
     this.positionElement = (ev) => {
-      const mousePos = getMousePos(ev)
-      // console.log(mousePos)
-      const docScrolls = {
-        left: document.body.scrollLeft + document.documentElement.scrollLeft,
-        top: document.body.scrollTop + document.documentElement.scrollTop
-      }
-      // this.DOM.reveal.style.mixBlendMode = 'overlay'
-      this.DOM.reveal.style.left = `${mousePos.x - 1000}px`
-      this.DOM.reveal.style.top = `${-150}%`
-      // this.DOM.reveal.style.top = `${mousePos.y - 500}px`
-      // this.DOM.reveal.style.top = `${docScrolls.top}px`
-      // this.DOM.reveal.style.left = `${mousePos.x + 20 - docScrolls.left}px`
+      const left = GSAP.utils.random(10, 90)
+      const top = GSAP.utils.random(10, 90)
+      const width = GSAP.utils.random(30, 300)
+      const height = GSAP.utils.random(20, 400)
+
+      this.DOM.revealImage.style.left = `${left}%`
+      this.DOM.revealImage.style.top = `${top}%`
+
+      this.DOM.revealImage.style.width = `${width}px`
+      this.DOM.revealImage.style.height = `${height}px`
+
+      // this.DOM.revealShape.style.width = `${width}rem`
+      // this.DOM.revealShape.style.height = `${height}rem`
     }
     this.mouseenterFn = (ev) => {
-      this.positionElement(ev)
+      this.positionElement()
       this.showImage()
     }
     this.mousemoveFn = ev => requestAnimationFrame(() => {
-      this.positionElement(ev)
+      // this.positionElement()
     })
     this.mouseleaveFn = () => {
       this.hideImage()
@@ -92,15 +96,15 @@ export default class Hover extends Component {
         duration: 0.7,
         ease: 'expo.inOut',
         // rotate: 5,
-        startAt: { x: '-100%', autoAlpha: 0 },
-        x: '0%'
+        // startAt: { x: '-100%', autoAlpha: 0 },
+        // x: '0%'
       })
     // animate the image element
       .to(this.DOM.revealImage, {
         duration: 0.7,
         ease: 'expo.inOut',
-        startAt: { x: '100%' },
-        x: '0%'
+        // startAt: { x: '100%' },
+        // x: '0%'
       }, 0)
       .to(this.DOM.revealImage, {
         ease: 'sine.inOut',
@@ -123,30 +127,17 @@ export default class Hover extends Component {
         GSAP.set(this.DOM.reveal, { opacity: 0 })
       }
     })
-      .to(this.DOM.revealInner, {
+      .fromTo(this.DOM.revealInner, {
+        autoAlpha: 1,
+        duration: 0.7,
+        ease: 'expo.inOut'
+      }, {
         autoAlpha: 0,
         duration: 0.7,
-        ease: 'expo.inOut',
-        // rotate: 0,
-        x: '100%'
-      })
+        ease: 'expo.inOut'
+      }, 2)
       .to(this.DOM.revealImage, {
-        duration: 0.7,
-        ease: 'expo.inOut',
-        x: '-100%',
-        scale: 1.01
-      }, 0)
+        scale: 3
+      })
   }
-
-  // addEventListeners () {
-  //   // update mouse position when moving the mouse
-  //   window.addEventListener('mousemove', ev => mousepos = getMousePos(ev))
-
-  //   this.element.addEventListener('mouseenter', this.mouseEnter)
-  //   this.element.addEventListener('mouseleave', this.mouseLeave)
-  // }
-
-  // removeEventListeners () {
-
-  // }
 }

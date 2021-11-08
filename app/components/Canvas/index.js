@@ -24,8 +24,6 @@ export default class Canvas {
     this.createScene()
 
     this.onResize()
-
-    // this.onChangeEnd(this.template)
   }
 
   createRenderer () {
@@ -89,6 +87,18 @@ export default class Canvas {
   /**
    * Events.
    */
+  onPreloaded () {
+    // if (this.play) {
+    //   this.play.onPreloaded()
+    // }
+
+    // if (this.work) {
+    //   this.work.onPreloaded()
+    // }
+
+    this.onChangeEnd(this.template)
+  }
+
   onChangeStart () {
     if (this.play) {
       this.play.hide()

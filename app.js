@@ -67,11 +67,34 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 const handleRequest = async api => {
+  const play = await api.getSingle('play')
   const meta = await api.getSingle('meta')
   const navigation = await api.getSingle('navigation')
   const preloader = await api.getSingle('preloader')
 
+  const { results: home } = await api.query(Prismic.Predicates.at('document.type', 'home'), {
+    fetchLinks: 'work.title work.image'
+  })
+
+  const assets = []
+
+  play.data.gallery.forEach(item => {
+    // console.log(item)
+    assets.push(item.image.url)
+  })
+
+  home.forEach(item => {
+    item.data.projects.forEach(work => {
+      assets.push(work.project.data.image.url)
+    })
+    
+    // console.log(assets)
+  })
+
   return {
+    assets,
+    play,
+    home,
     meta,
     navigation,
     preloader
@@ -81,11 +104,8 @@ const handleRequest = async api => {
 app.get('/', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
-  // const home = await api.getSingle('home')
 
-  const { results: home } = await api.query(Prismic.Predicates.at('document.type', 'home'), {
-    fetchLinks: 'work.title work.image'
-  })
+  // const home = await api.getSingle('home')
 
   // home.forEach(item => {
   //   console.log(item.data.projects[0].project)
@@ -96,8 +116,7 @@ app.get('/', async (req, res) => {
 
   // Render your views here.
   res.render('pages/home', {
-    ...defaults,
-    home
+    ...defaults
   })
 })
 
@@ -115,13 +134,11 @@ app.get('/info', async (req, res) => {
 
 app.get('/play', async (req, res) => {
   const api = await initApi(req)
-  const play = await api.getSingle('play')
   const defaults = await handleRequest(api)
 
   // Render your views here.
   res.render('pages/play', {
-    ...defaults,
-    play
+    ...defaults
   })
 })
 

@@ -1,6 +1,6 @@
 import Component from 'classes/Component'
 import GSAP from 'gsap'
-import { getMousePos } from 'utils/utils'
+// import { getMousePos } from 'utils/utils'
 export default class Hover extends Component {
   constructor ({ element }) {
     super({

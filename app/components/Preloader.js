@@ -1,21 +1,27 @@
-import each from 'lodash/each'
+// import each from 'lodash/each'
 import GSAP from 'gsap'
+
+import { Texture } from 'ogl'
 
 import { split } from 'utils/text'
 
 import Component from 'classes/Component'
 
 export default class Preloader extends Component {
-  constructor () {
+  constructor ({ canvas }) {
     super({
       element: '.preloader',
       elements: {
         animatingIcon: '.preloader__animation',
         number: '.preloader__indicator__number__text',
-        link: '.preloader__indicator__link',
-        images: document.querySelectorAll('img')
+        link: '.preloader__indicator__link'
+        // images: document.querySelectorAll('img')
       }
     })
+
+    this.canvas = canvas
+
+    window.TEXTURES = {}
 
     split({
       element: this.elements.number
@@ -34,16 +40,35 @@ export default class Preloader extends Component {
   }
 
   createLoader () {
-    each(this.elements.images, element => {
-      element.onload = _ => this.onAssetLoaded(element)
-      element.src = element.getAttribute('data-src')
+    // each(this.elements.images, element => {
+    //   element.onload = _ => this.onAssetLoaded(element)
+    //   element.src = element.getAttribute('data-src')
+    // })
+
+    window.ASSETS.forEach(image => {
+      const texture = new Texture(this.canvas.gl, {
+        generateMipmaps: false
+      })
+
+      const media = new window.Image()
+
+      media.crossOrigin = 'anonymous'
+      media.src = image
+      media.onload = _ => {
+        texture.image = media
+
+        this.onAssetLoaded()
+      }
+
+      window.TEXTURES[image] = texture
     })
   }
 
   onAssetLoaded (image) {
     this.length += 1
 
-    const percent = this.length / this.elements.images.length
+    // const percent = this.length / this.elements.images.length
+    const percent = this.length / window.ASSETS.length
 
     this.elements.number.innerHTML = `${Math.round(percent * 100)}%`
 
