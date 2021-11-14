@@ -117,6 +117,7 @@
 
 .info__content__text {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: 2rem 0rem;
 

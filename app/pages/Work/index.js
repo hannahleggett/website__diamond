@@ -7,6 +7,7 @@ export default class Work extends Page {
 
       element: '.work',
       elements: {
+        wrapper: '.work__wrapper'
       }
     })
   }
