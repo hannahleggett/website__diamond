@@ -14,8 +14,8 @@ export default class Preloader extends Component {
       elements: {
         animatingIcon: '.preloader__animation',
         number: '.preloader__indicator__number__text',
-        link: '.preloader__indicator__link'
-        // images: document.querySelectorAll('img')
+        link: '.preloader__indicator__link',
+        images: document.querySelectorAll('img')
       }
     })
 
@@ -40,10 +40,12 @@ export default class Preloader extends Component {
   }
 
   createLoader () {
-    // each(this.elements.images, element => {
-    //   element.onload = _ => this.onAssetLoaded(element)
-    //   element.src = element.getAttribute('data-src')
-    // })
+    if (this.elements.images) {
+      this.elements.images.forEach(element => {
+        element.onload = _ => this.onAssetLoaded(element)
+        element.src = element.getAttribute('data-src')
+      })
+    }
 
     window.ASSETS.forEach(image => {
       const texture = new Texture(this.canvas.gl, {

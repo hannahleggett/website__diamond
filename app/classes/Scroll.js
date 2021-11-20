@@ -1,158 +1,158 @@
-import NormalizeWheel from 'normalize-wheel'
-import Prefix from 'prefix'
+// import NormalizeWheel from 'normalize-wheel'
+// import Prefix from 'prefix'
 
-import each from 'lodash/each'
+// import each from 'lodash/each'
 
-import Component from 'classes/Component'
+// import Component from 'classes/Component'
 
-import { getOffset } from 'utils/dom'
-import { lerp } from 'utils/math'
+// import { getOffset } from 'utils/dom'
+// import { lerp } from 'utils/math'
 
-export default class extends Component {
-  constructor ({ element, elements }) {
-    super({
-      element,
-      elements
-    })
+// export default class extends Component {
+//   constructor ({ element, elements }) {
+//     super({
+//       element,
+//       elements
+//     })
 
-    this.transformPrefix = Prefix('transform')
+//     this.transformPrefix = Prefix('transform')
 
-    this.scroll = {
-      ease: 0.1,
-      position: 0,
-      current: 0,
-      target: 0,
-      last: 0,
-      clamp: 0
-    }
+//     this.scroll = {
+//       ease: 0.1,
+//       position: 0,
+//       current: 0,
+//       target: 0,
+//       last: 0,
+//       clamp: 0
+//     }
 
-    each(this.elements.items, element => {
-      const offset = getOffset(element)
+//     each(this.elements.items, element => {
+//       const offset = getOffset(element)
 
-      element.extra = 0
-      element.height = offset.height
-      element.offset = offset.top
-      element.position = 0
-    })
+//       element.extra = 0
+//       element.height = offset.height
+//       element.offset = offset.top
+//       element.position = 0
+//     })
 
-    this.length = this.elements.items.length
+//     this.length = this.elements.items.length
 
-    this.height = this.elements.items[0].height
-    this.heightTotal = this.elements.list.getBoundingClientRect().height
-  }
+//     this.height = this.elements.items[0].height
+//     this.heightTotal = this.elements.list.getBoundingClientRect().height
+//   }
 
-  enable () {
-    this.isEnabled = true
+//   enable () {
+//     this.isEnabled = true
 
-    this.update()
-  }
+//     this.update()
+//   }
 
-  disable () {
-    this.isEnabled = false
-  }
+//   disable () {
+//     this.isEnabled = false
+//   }
 
-  onTouchDown (event) {
-    if (!this.isEnabled) return
+//   onTouchDown (event) {
+//     if (!this.isEnabled) return
 
-    this.isDown = true
+//     this.isDown = true
 
-    this.scroll.position = this.scroll.current
-    this.start = event.touches ? event.touches[0].clientY : event.clientY
-  }
+//     this.scroll.position = this.scroll.current
+//     this.start = event.touches ? event.touches[0].clientY : event.clientY
+//   }
 
-  onTouchMove (event) {
-    if (!this.isDown || !this.isEnabled) return
+//   onTouchMove (event) {
+//     if (!this.isDown || !this.isEnabled) return
 
-    const y = event.touches ? event.touches[0].clientY : event.clientY
-    const distance = (this.start - y) * 2
+//     const y = event.touches ? event.touches[0].clientY : event.clientY
+//     const distance = (this.start - y) * 2
 
-    this.scroll.target = this.scroll.position + distance
-  }
+//     this.scroll.target = this.scroll.position + distance
+//   }
 
-  onTouchUp (event) {
-    if (!this.isEnabled) return
+//   onTouchUp (event) {
+//     if (!this.isEnabled) return
 
-    this.isDown = false
-  }
+//     this.isDown = false
+//   }
 
-  onWheel (event) {
-    if (!this.isEnabled) return
+//   onWheel (event) {
+//     if (!this.isEnabled) return
 
-    const normalized = NormalizeWheel(event)
-    const speed = normalized.pixelY * 0.5
+//     const normalized = NormalizeWheel(event)
+//     const speed = normalized.pixelY * 0.5
 
-    this.scroll.target += speed
-  }
+//     this.scroll.target += speed
+//   }
 
-  transform (element, y) {
-    element.style[this.transformPrefix] = `translate3d(0, ${Math.floor(y)}px, 0)`
-  }
+//   transform (element, y) {
+//     element.style[this.transformPrefix] = `translate3d(0, ${Math.floor(y)}px, 0)`
+//   }
 
-  update () {
-    if (!this.isEnabled) return
+//   update () {
+//     if (!this.isEnabled) return
 
-    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease)
+//     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease)
 
-    const scrollClamp = Math.round(this.scroll.current % this.heightTotal)
+//     const scrollClamp = Math.round(this.scroll.current % this.heightTotal)
 
-    if (this.scroll.current < this.scroll.last) {
-      this.direction = 'down'
-    } else {
-      this.direction = 'up'
-    }
+//     if (this.scroll.current < this.scroll.last) {
+//       this.direction = 'down'
+//     } else {
+//       this.direction = 'up'
+//     }
 
-    each(this.elements.items, (element, index) => {
-      element.position = -this.scroll.current - element.extra
+//     each(this.elements.items, (element, index) => {
+//       element.position = -this.scroll.current - element.extra
 
-      const offset = element.position + element.offset + element.height
+//       const offset = element.position + element.offset + element.height
 
-      element.isBefore = offset < 0
-      element.isAfter = offset > this.heightTotal
+//       element.isBefore = offset < 0
+//       element.isAfter = offset > this.heightTotal
 
-      if (this.direction === 'up' && element.isBefore) {
-        element.extra = element.extra - this.heightTotal
+//       if (this.direction === 'up' && element.isBefore) {
+//         element.extra = element.extra - this.heightTotal
 
-        element.isBefore = false
-        element.isAfter = false
-      }
+//         element.isBefore = false
+//         element.isAfter = false
+//       }
 
-      if (this.direction === 'down' && element.isAfter) {
-        element.extra = element.extra + this.heightTotal
+//       if (this.direction === 'down' && element.isAfter) {
+//         element.extra = element.extra + this.heightTotal
 
-        element.isBefore = false
-        element.isAfter = false
-      }
+//         element.isBefore = false
+//         element.isAfter = false
+//       }
 
-      element.clamp = element.extra % scrollClamp
+//       element.clamp = element.extra % scrollClamp
 
-      this.transform(element, element.position)
-    })
+//       this.transform(element, element.position)
+//     })
 
-    this.scroll.last = this.scroll.current
-    this.scroll.clamp = scrollClamp
-  }
+//     this.scroll.last = this.scroll.current
+//     this.scroll.clamp = scrollClamp
+//   }
 
-  onResize () {
-    each(this.elements.items, element => {
-      this.transform(element, 0)
+//   onResize () {
+//     each(this.elements.items, element => {
+//       this.transform(element, 0)
 
-      const offset = getOffset(element)
+//       const offset = getOffset(element)
 
-      element.extra = 0
-      element.height = offset.height
-      element.offset = offset.top
-      element.position = 0
-    })
+//       element.extra = 0
+//       element.height = offset.height
+//       element.offset = offset.top
+//       element.position = 0
+//     })
 
-    this.height = this.elements.items[0].getBoundingClientRect().height
-    this.heightTotal = this.elements.list.getBoundingClientRect().height
+//     this.height = this.elements.items[0].getBoundingClientRect().height
+//     this.heightTotal = this.elements.list.getBoundingClientRect().height
 
-    this.scroll = {
-      ease: 0.1,
-      position: 0,
-      current: 0,
-      target: 0,
-      last: 0
-    }
-  }
-}
+//     this.scroll = {
+//       ease: 0.1,
+//       position: 0,
+//       current: 0,
+//       target: 0,
+//       last: 0
+//     }
+//   }
+// }
