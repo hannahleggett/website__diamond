@@ -1,5 +1,8 @@
 .transition {
   @extend %cover;
 
+  background-color: $color-accent-lime;
+  pointer-events: none;
+  opacity: 0;
   z-index: z('transition');
 }

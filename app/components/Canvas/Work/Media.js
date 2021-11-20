@@ -29,7 +29,7 @@ export default class {
   createTexture () {
     this.texture = new Texture(this.gl)
 
-    const image = this.element.querySelector('.work__gallery__media__image')
+    // const image = this.element.querySelector('.work__gallery__media__image')
 
     // console.log(this.element)
 

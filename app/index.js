@@ -75,10 +75,10 @@ class App {
    * Preloader.
    */
   onPreloaded () {
-    this.canvas.onPreloaded()
-    this.preloader.destroy()
-
     this.onResize()
+
+    this.canvas.onPreloaded()
+    // this.preloader.destroy()
 
     this.page.show()
 

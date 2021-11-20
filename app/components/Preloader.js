@@ -44,6 +44,7 @@ export default class Preloader extends Component {
       this.elements.images.forEach(element => {
         element.onload = _ => this.onAssetLoaded(element)
         element.src = element.getAttribute('data-src')
+        element.classList.add('loaded')
       })
     }
 
@@ -81,6 +82,8 @@ export default class Preloader extends Component {
 
   onLoaded () {
     return new Promise(resolve => {
+      this.emit('completed')
+
       this.animateOut = GSAP.timeline({
         delay: 2
       })
@@ -100,6 +103,7 @@ export default class Preloader extends Component {
       }, '-=1.4')
 
       this.animateOut.to(this.element, {
+        // alpha: 0,
         duration: 1.5,
         ease: 'expo.out',
         scaleY: 0,
@@ -107,7 +111,7 @@ export default class Preloader extends Component {
       }, '-=1')
 
       this.animateOut.call(_ => {
-        this.emit('completed')
+        this.destroy()
       })
     })
   }

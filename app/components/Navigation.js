@@ -8,7 +8,7 @@ export default class Navigation extends Component {
       element: '.navigation',
       elements: {
         items: '.navigation__list__item',
-        links: '.navigation__list__link'
+        links: '.navigation__list__link',
       }
     })
 

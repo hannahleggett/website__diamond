@@ -13,8 +13,8 @@ export default class {
 
     this.group = new Transform()
 
-    this.galleryElement = document.querySelector('.work__gallery__wrapper')
-    this.mediasElements = document.querySelectorAll('.work__gallery__media')
+    // this.galleryElement = document.querySelector('.work__gallery__wrapper')
+    // this.mediasElements = document.querySelectorAll('.work__gallery__media')
 
     // console.log(this.galleryElement)
 

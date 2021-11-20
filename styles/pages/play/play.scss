@@ -34,85 +34,169 @@
   position: absolute;
 
   &:nth-child(1) {
-    height: 40rem;
-    width: 70rem;
+    height: 24.8rem;
+    width: 35rem;
   }
 
   &:nth-child(2) {
-    height: 50rem;
+    height: 24.8rem;
     left: 85rem;
     top: 30rem;
-    width: 40rem;
+    width: 35rem;
   }
 
   &:nth-child(3) {
-    height: 50rem;
+    height: 24.8rem;
     left: 15rem;
     top: 60rem;
-    width: 60rem;
+    width: 35rem;
   }
 
   &:nth-child(4) {
-    height: 30rem;
+    height: 24.8rem;
     left: 140rem;
     top: 10rem;
-    width: 50rem;
+    width: 35rem;
   }
 
   &:nth-child(5) {
-    height: 60rem;
+    height: 24.8rem;
     left: 150rem;
     top: 55rem;
-    width: 40rem;
+    width: 35rem;
   }
 
   &:nth-child(6) {
-    height: 75rem;
+    height: 24.8rem;
     left: 5rem;
     top: 120rem;
-    width: 57.5rem;
+    width: 35rem;
   }
 
   &:nth-child(7) {
-    height: 70rem;
+    height: 24.8rem;
     left: 140rem;
     top: 130rem;
-    width: 50rem;
+    width: 35rem;
   }
 
   &:nth-child(8) {
-    height: 50rem;
+    height: 24.8rem;
     left: 85rem;
     top: 95rem;
-    width: 40rem;
+    width: 35rem;
   }
 
   &:nth-child(9) {
-    height: 65rem;
+    height: 24.8rem;
     left: 75rem;
     top: 155rem;
-    width: 50rem;
+    width: 35rem;
   }
 
   &:nth-child(10) {
-    height: 43rem;
+    height: 24.8rem;
     left: 160rem;
     top: 215rem;
-    width: 30rem;
+    width: 35rem;
   }
 
   &:nth-child(11) {
-    height: 50rem;
+    height: 24.8rem;
     left: 70rem;
     top: 235rem;
-    width: 80rem;
+    width: 35rem;
   }
 
   &:nth-child(12) {
-    height: 70rem;
+    height: 24.8rem;
     left: 8.8rem;
     top: 210rem;
-    width: 50rem;
+    width: 35rem;
+  }
+
+  &:nth-child(13) {
+    height: 24.8rem;
+    left: 100rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(14) {
+    height: 24.8rem;
+    left: 100rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(15) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(16) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+  
+  &:nth-child(17) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(18) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(19) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(20) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(21) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(22) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(23) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
+  }
+
+  &:nth-child(24) {
+    height: 24.8rem;
+    left: 8.8rem;
+    top: 210rem;
+    width: 35rem;
   }
 
   // @include media('<laptop') {
@@ -247,4 +331,12 @@
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
 }
+}
+
+.play__scribble {
+  @extend %center;
+
+  position: absolute;
+  left: 0;
+  top: 0;
 }

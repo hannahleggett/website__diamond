@@ -6,6 +6,7 @@
   // color: black;
   overflow: hidden;
   text-align: center;
+  z-index: z('content');
 
   &--active {
     @extend %page--active;

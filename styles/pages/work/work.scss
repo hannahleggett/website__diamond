@@ -133,7 +133,7 @@
 }
 
 .work__gallery__wrapper {
-  align-items: center;
+  // align-items: center;
   display: flex;
   // flex-direction: row;
   left: 4rem;
@@ -143,24 +143,25 @@
 .work__gallery__media {
   position: relative;
   margin: 0 2rem;
-  visibility: hidden;
+  // visibility: hidden;
 
   &:first-child {
     height: 40rem;
     width: 60rem;
     margin-left: 0rem;
-    margin-top: 0rem;
+    margin-top: 40rem;
   }
 
   &:nth-child(2) {
     height: 60rem;
     width: 60rem;
-    margin-left: 4rem;
+    margin-left: 10rem;
   }
 
   &:nth-child(3) {
     height: 80rem;
     width: 120rem;
+    margin-top: 20rem;
   }
 
   &:nth-child(4) {
