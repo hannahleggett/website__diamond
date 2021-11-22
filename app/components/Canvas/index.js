@@ -1,6 +1,6 @@
 import { Camera, Renderer, Transform } from 'ogl'
 
-import Play from './Play'
+// import Play from './Play'
 import Work from './Work'
 
 export default class Canvas {
@@ -50,20 +50,20 @@ export default class Canvas {
    * Play.
    */
 
-  createPlay () {
-    this.play = new Play({
-      gl: this.gl,
-      scene: this.scene,
-      sizes: this.sizes
-    })
-  }
+  // createPlay () {
+  //   this.play = new Play({
+  //     gl: this.gl,
+  //     scene: this.scene,
+  //     sizes: this.sizes
+  //   })
+  // }
 
-  destroyPlay () {
-    if (!this.play) return
+  // destroyPlay () {
+  //   if (!this.play) return
 
-    this.play.destroy()
-    this.play = null
-  }
+  //   this.play.destroy()
+  //   this.play = null
+  // }
 
   /**
    * Work.
@@ -100,9 +100,9 @@ export default class Canvas {
   }
 
   onChangeStart () {
-    if (this.play) {
-      this.play.hide()
-    }
+    // if (this.play) {
+    //   this.play.hide()
+    // }
 
     if (this.work) {
       this.work.hide()
@@ -116,11 +116,11 @@ export default class Canvas {
       this.destroyWork()
     }
 
-    if (template === 'play') {
-      this.createPlay()
-    } else {
-      this.destroyPlay()
-    }
+    // if (template === 'play') {
+    //   this.createPlay()
+    // } else {
+    //   this.destroyPlay()
+    // }
   }
 
   onResize () {
@@ -143,9 +143,9 @@ export default class Canvas {
       sizes: this.sizes
     }
 
-    if (this.play) {
-      this.play.onResize(values)
-    }
+    // if (this.play) {
+    //   this.play.onResize(values)
+    // }
 
     if (this.work) {
       this.work.onResize(values)
@@ -163,9 +163,9 @@ export default class Canvas {
       y: this.y
     }
 
-    if (this.play) {
-      this.play.onTouchDown(values)
-    }
+    // if (this.play) {
+    //   this.play.onTouchDown(values)
+    // }
 
     if (this.work) {
       this.work.onTouchDown(values)
@@ -186,9 +186,9 @@ export default class Canvas {
       y: this.y
     }
 
-    if (this.play) {
-      this.play.onTouchMove(values)
-    }
+    // if (this.play) {
+    //   this.play.onTouchMove(values)
+    // }
 
     if (this.work) {
       this.work.onTouchMove(values)
@@ -209,9 +209,9 @@ export default class Canvas {
       y: this.y
     }
 
-    if (this.play) {
-      this.play.onTouchUp(values)
-    }
+    // if (this.play) {
+    //   this.play.onTouchUp(values)
+    // }
 
     if (this.work) {
       this.work.onTouchUp(values)
@@ -219,9 +219,9 @@ export default class Canvas {
   }
 
   onWheel (event) {
-    if (this.play) {
-      this.play.onWheel(event)
-    }
+    // if (this.play) {
+    //   this.play.onWheel(event)
+    // }
 
     if (this.work) {
       this.work.onWheel(event)
@@ -232,9 +232,9 @@ export default class Canvas {
    * Loop.
    */
   update () {
-    if (this.play) {
-      this.play.update()
-    }
+    // if (this.play) {
+    //   this.play.update()
+    // }
 
     if (this.work) {
       this.work.update()
