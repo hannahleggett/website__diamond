@@ -96,8 +96,7 @@ export default class Hover extends Component {
         x: '0%'
       }, 0)
       .to(this.DOM.revealImage, {
-        ease: 'sine.inOut',
-        scale: 1
+        ease: 'sine.inOut'
       }, 0.3)
   }
 
@@ -124,8 +123,7 @@ export default class Hover extends Component {
       .to(this.DOM.revealImage, {
         duration: 0.7,
         ease: 'expo.inOut',
-        x: '-100%',
-        scale: 1.01
+        x: '-100%'
       }, 0)
   }
 

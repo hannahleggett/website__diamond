@@ -67,6 +67,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 const handleRequest = async api => {
+  const homebg = await api.getSingle('home')
   const play = await api.getSingle('play')
   const meta = await api.getSingle('meta')
   const navigation = await api.getSingle('navigation')
@@ -95,6 +96,7 @@ const handleRequest = async api => {
     assets,
     play,
     home,
+    homebg,
     meta,
     navigation,
     preloader
@@ -104,8 +106,6 @@ const handleRequest = async api => {
 app.get('/', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
-
-  // const home = await api.getSingle('home')
 
   // home.forEach(item => {
   //   console.log(item.data.projects[0].project)
