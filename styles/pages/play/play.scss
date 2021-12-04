@@ -29,6 +29,7 @@
   //   height: 650rem;
   // }
   display: flex;
+  flex-direction: row;
 }
 
 .play__gallery__media {
@@ -327,7 +328,7 @@
   // }
 
 .play__gallery__media__image {
-  height: 50vh;
+  height: 100%;
   left: 0;
   object-fit: cover;
   // position: absolute;

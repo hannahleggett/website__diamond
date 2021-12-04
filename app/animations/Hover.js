@@ -78,7 +78,7 @@ export default class Hover extends Component {
         this.DOM.reveal.style.opacity = 1
         // set a high z-index value so image appears on top of other elements
         GSAP.set(this.DOM.el, { zIndex: 1000 })
-        GSAP.set(this.DOM.revealImage, { scale: 1.01 })
+        // GSAP.set(this.DOM.revealImage, { scale: 1 })
       }
     })
     // animate the image wrap

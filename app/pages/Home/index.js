@@ -19,7 +19,6 @@ export default class Home extends Page {
 
   create () {
     super.create()
-
     // console.log(this.element.workLinks)
 
     // this.elements.playToggle.addEventListener('click', _ => console.log('Oh, you clicked me'))

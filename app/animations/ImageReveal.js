@@ -137,7 +137,7 @@ export default class Hover extends Component {
         ease: 'expo.inOut'
       }, 2)
       .to(this.DOM.revealImage, {
-        scale: 3
+        // scale: 3
       })
   }
 }

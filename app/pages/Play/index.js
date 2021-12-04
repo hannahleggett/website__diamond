@@ -22,10 +22,10 @@ export default class Play extends Page {
 
     each(this.elements.outer, (el, index) => {
       const random = GSAP.utils.random(0, 5)
-      el.style.marginLeft = random + 'rem'
+      el.style.marginRight = random + 'rem'
 
       el.addEventListener('mouseenter', _ => {
-        console.log('enter' + index)
+        // console.log('enter' + index)
 
         const image = el.querySelector('img')
 
@@ -51,7 +51,7 @@ export default class Play extends Page {
       })
 
       el.addEventListener('mouseleave', _ => {
-        console.log('leave' + index)
+        // console.log('leave' + index)
         this.tlOpen.reverse()
       })
     })
